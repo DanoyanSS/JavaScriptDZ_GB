@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="from" type="text"> В инпуте написано: <span></span>
+
+    <br>
+
+    <button class="messageBtn">Показать блок</button>
+    <div class="message">Привет :)</div>
+    <br>
+
+    <form>
+        <label>
+    Первый инпут:
+    <input class="form-control" type="text">
+    </label>
+        <br>
+        <br>
+        <label>
+    Второй инпут:
+    <select class="form-control">
+    <option value=""></option>
+    <option value="1">Один</option>
+    <option value="2">Два</option>
+    </select>
+    </label>
+        <br>
+        <br>
+        <button>Отправить</button>
+    </form>
+
+    <script>
+        "use strict";
+
+        /*
+        1. При изменении значения в input с id="from", значение содержащееся в нем
+        должно моментально отображаться в span. То есть при печати в input'е тег span
+        также должен меняться.
+        */
+        const fromSpanContent = document.getElementById("from");
+        const fromSpan = document.querySelector("span");
+        fromSpanContent.addEventListener("input", () => {
+            fromSpan.textContent = fromSpanContent.value;
+        });
+        /*
+        2. При клике на кнопку с классом messageBtn необходимо элементу с классом
+        message:
+        1) добавить два класса: animate_animated и animate_fadeInLeftBig
+        2) поставить данному элементу стиль visibility в значение 'visible'.
+        */
+        const messageButton = document.querySelector(".messageBtn");
+        const messageHi = document.querySelector(".message");
+        messageButton.addEventListener('click', () => {
+            messageHi.classList.add("animate_animated", "animate_fadeInLeftBig");
+            messageHi.style.visibility = "visible";
+        });
+        /*
+        3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
+        форме. Если какое-либо поле не заполнено, форма не должна отправляться, также
+        должны быть подсвечены незаполненные поля (необходимо поставить класс error
+        незаполненным полям).
+        Как только пользователь начинает заполнять какое-либо поле, необходимо,
+        при вводе в данное поле, произвести проверку:
+        Если поле пустое, необходимо данное поле подсветить (поставить класс error
+        данному полю).
+        Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
+        */
+        const formElement = document.querySelector('form');
+        const formControl = document.querySelector('.form-control');
+        const formSelect = document.querySelector('select');
+
+        formElement.addEventListener("submit", (e) => {
+            if (formControl.value === "") {
+                formControl.style.border = "3px solid red";
+                formControl.classList.add("error");
+                e.preventDefault();
+            } else formControl.style.border = "1px solid black";
+            if (formSelect.selectedIndex == 0) {
+                formSelect.style.border = "3px solid red";
+                formSelect.classList.add("error");
+                e.preventDefault();
+            } else formSelect.style.border = "1px solid black";
+        });
+    </script>
+    <input id="textH1" type="text">:
+    <h1></h1>
+    <!-- Задание с семинара
+Создать поле ввода и под ним заголовок h1 с текстом “Заголовок”
+При вводе текста в поле ввода необходимо чтобы текст внутри заголовка менятся на введенный в поле ввода -->
+    <script>
+        const textHead = document.getElementById("textH1");
+        const headHidden = document.querySelector("h1");
+        textHead.addEventListener("input", () => {
+            headHidden.textContent = textHead.value;
+        });
+    </script>
+</body>
+
+</html>

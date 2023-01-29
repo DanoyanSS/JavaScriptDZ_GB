@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="left">
+        <h2>Введите название города</h2>
+        <p>Например: <span style="color:rgb(23, 6, 139); font-size:16px;">Mezhdurechenskiy</span></p>
+        <input type="text" id="city" placeholder="Введите название города (англ.)..." />
+        <button id="cityB" onclick="showDateTime();">OK</button>
+
+        <p class="text-center">Прогноз на завтра <br><span id="cityC"></span>
+            <p>
+                <div id="tablo">
+                    <div class="day">
+                        <img id="tmp4" /><br>
+                        <p id="day1"></p>
+                        <div id="demo7"></div>
+                        <div id="demo5"></div>
+                        <div id="demo6"></div>
+                        <div id="demo4"></div>
+                    </div>
+
+                </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="data.js"></script>
+</body>
+
+</html>
