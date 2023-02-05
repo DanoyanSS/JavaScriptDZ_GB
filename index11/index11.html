@@ -11,27 +11,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
+
 </head>
 
 <body>
     <script src="dataSell.js"></script>
+
     <header class="sell_header">
         <h1 class="heading">Fetured Items</h1>
         <h5 class="heading5">Shop for items based on what we featured in this week</h5>
     </header>
     <section class="container sell_section">
-        <div class="grid_box">
-
-        </div>
+        <div class="grid_box" id="bay_content"></div>
     </section>
+    <section class="container cart grid_box"></section>
+
     <script>
         const dateJson = JSON.parse(dataSell);
-        console.log(dateJson);
-        const sellSection = document.querySelector('.grid_box');
+        const cartSide = document.querySelector('.cart');
+        const sellSection = document.getElementById('bay_content');
         dateJson.forEach(element => {
             const divBox = document.createElement('div');
             sellSection.appendChild(divBox);
-            divBox.classList.add("item_box");
+            divBox.classList.add('item_box');
+            divBox.id = element.id;
             const dateImg = document.createElement('img');
             const dateHeader = document.createElement('h4');
             dateHeader.classList.add("h4_content");
@@ -39,16 +42,37 @@
             dateText_carts.classList.add("p_content");
             const datePrice = document.createElement('p');
             datePrice.classList.add("price_content");
+            const dateButton = document.createElement("button");
+            dateButton.classList.add("glow-on-hover");
+            dateButton.type = "button";
+            dateButton.id = element.id;
             dateImg.src = element.image;
             dateHeader.textContent = element.header;
             dateText_carts.textContent = element.text_carts;
-            datePrice.textContent = element.price;
+            datePrice.textContent = "$" + element.price;
+            dateButton.textContent = element.button;
             divBox.appendChild(dateImg);
             divBox.appendChild(dateHeader);
             divBox.appendChild(dateText_carts);
             divBox.appendChild(datePrice);
+            divBox.appendChild(dateButton);
         });
+        const divBox = document.querySelector('.item_box');
+        document.onclick = event => {
+            if (event.target.classList.contains("glow-on-hover")) {
+                // plusFunction(event.target.id);
+                console.log(event.target.id);
+            }
+        }
+        const plusFunction = id => {
+            divBox[id]++;
+            renderCart();
+        }
+        const renderCart = () => {
+            console.log(divBox);
+        }
     </script>
+
 
 </body>
 

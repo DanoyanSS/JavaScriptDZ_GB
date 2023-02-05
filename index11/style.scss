@@ -1,4 +1,5 @@
     @import "vars";
+    @import "button";
     * {
         margin: 0;
         padding: 0;
@@ -80,4 +81,15 @@
         line-height: 19px;
         color: #F16D7F;
         padding: 4%;
+    }
+    
+    .cartItems {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 19px;
+        color: #F26376;
+        text-align: center;
+        padding: 3%;
     }
