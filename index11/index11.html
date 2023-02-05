@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeworck</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <script src="dataSell.js"></script>
+    <header class="sell_header">
+        <h1 class="heading">Fetured Items</h1>
+        <h5 class="heading5">Shop for items based on what we featured in this week</h5>
+    </header>
+    <section class="container sell_section">
+        <div class="grid_box">
+
+        </div>
+    </section>
+    <script>
+        const dateJson = JSON.parse(dataSell);
+        console.log(dateJson);
+        const sellSection = document.querySelector('.grid_box');
+        dateJson.forEach(element => {
+            const divBox = document.createElement('div');
+            sellSection.appendChild(divBox);
+            divBox.classList.add("item_box");
+            const dateImg = document.createElement('img');
+            const dateHeader = document.createElement('h4');
+            dateHeader.classList.add("h4_content");
+            const dateText_carts = document.createElement('p');
+            dateText_carts.classList.add("p_content");
+            const datePrice = document.createElement('p');
+            datePrice.classList.add("price_content");
+            dateImg.src = element.image;
+            dateHeader.textContent = element.header;
+            dateText_carts.textContent = element.text_carts;
+            datePrice.textContent = element.price;
+            divBox.appendChild(dateImg);
+            divBox.appendChild(dateHeader);
+            divBox.appendChild(dateText_carts);
+            divBox.appendChild(datePrice);
+        });
+    </script>
+
+</body>
+
+</html>
